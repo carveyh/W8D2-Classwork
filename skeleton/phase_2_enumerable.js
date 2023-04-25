@@ -44,7 +44,7 @@ Array.prototype.myReduce = function(callback, initialValue) {
 		acc = callback(acc, el);
 	})
 	return acc;
-}
+};
 // console.log("hello")
 
 
@@ -54,11 +54,11 @@ Array.prototype.myReduce = function(callback, initialValue) {
 
 
 // without initialValue
-a = console.log([1, 2, 3].myReduce(function(acc, el) {
+a = [1, 2, 3].myReduce(function(acc, el) {
   return acc + el;
-})) // => 6
+}); // => 6
 
-// console.log(a)
+console.log(a);
 
 // with initialValue
 [1, 2, 3].myReduce(function(acc, el) {
