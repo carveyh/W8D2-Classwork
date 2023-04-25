@@ -61,3 +61,28 @@ const deepDup = function(arr) {
     });
     return copy;
 };
+
+// -----------------------------------------
+
+const bsearch = function(arr, target) {
+	if (arr.length === 0) {
+		return -1;
+	}
+	midIdx = arr.length / 2;
+	if(target === arr[midIdx]) {
+		return midIdx;
+	} else {
+		let left = arr.slice(0, midIdx);
+		let right = arr.slice(midIdx + 1, arr.length);
+		//Less than
+		if(target < arr[midIdx]) {
+			return bsearch(left, target);
+		} else {
+			let tempIdx = bsearch(right, target);
+			if (tempIdx === -1) {
+				return -1;
+			}
+			return midIdx + tempIdx;
+		}
+	}
+};
