@@ -22,5 +22,12 @@ console.log([1,0,-5].bubbleSort())
 //------------------------------------------------------------------------------
 String.prototype.substrings = function() {
     substrings = [];
-
+    for(i = 0; i < this.length; i++) {
+        for(j = i + 1; j < this.length + 1; j++) {
+            substrings.push(this.slice(i, j));
+        }
+    }
+    return substrings;
 };
+
+console.log("hello".substrings());
