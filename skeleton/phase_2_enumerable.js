@@ -30,16 +30,16 @@ console.log([1,2,3,4].myMap(callback2))
 
 //--------------------------------------
 
-Array.prototype.myReduce = function(callback, initialValue = NaN) {
-	debugger
-	if(initialValue !== undefined) {
-		let acc = initialValue;
-		let fullArray = this;
-	} else {
-		let acc = this[0];
-		let fullArray = this.slice(1, this.length - 1);
+//myReduce needs to be defined with semicolon or will error.
+Array.prototype.myReduce = function(callback, initialValue) {
+	// debugger
+	let acc = initialValue;
+	let fullArray = this;
+	if(initialValue === undefined) {
+		acc = this[0];
+		fullArray = this.slice(1, this.length - 1);
 	}
-	debugger
+	// debugger
 	fullArray.myEach(el => {
 		acc = callback(acc, el);
 	})
@@ -47,12 +47,22 @@ Array.prototype.myReduce = function(callback, initialValue = NaN) {
 }
 // console.log("hello")
 
+
+
+//These will trigger "Uncaught TypeError: Cannot read properties of undefined (reading '3')"
+//unless we wrap these myReduce calls in console.log, or assign to a variable
+
+
 // without initialValue
-[1, 2, 3].myReduce(function(acc, el) {
+a = console.log([1, 2, 3].myReduce(function(acc, el) {
   return acc + el;
-}); // => 6
+})) // => 6
+
+// console.log(a)
 
 // with initialValue
 [1, 2, 3].myReduce(function(acc, el) {
   return acc + el;
 }, 25); // => 31
+
+// console.log(b)
