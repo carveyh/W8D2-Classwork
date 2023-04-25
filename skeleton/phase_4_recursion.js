@@ -51,16 +51,11 @@ const fibonacci = function(n){
 
 //------------------------------------------
 const deepDup = function(arr) {
-    copy = [];
+    let copy = [];
     arr.forEach(el => {
         if (el instanceof Array) {
-            // arr.forEach(el => {
-            //     copy.push(deepDup(el))
-            // })
-            copy.push(deepDup(el))
+            copy.push(deepDup(el));
         } else {
-            // something to duplicate base case
-            // return arr;
             copy.push(el);
         }
     });
